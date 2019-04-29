@@ -30,7 +30,7 @@ void  TextManipulation::showCorruptedTestSet() {
 
 void  TextManipulation::makeWordList() {
 	doc.open(path);
-	if (!doc.is_open()) {								// Переделаю под try-catch-trow.
+	if (!doc.is_open()) {								// РџРµСЂРµРґРµР»Р°СЋ РїРѕРґ try-catch-trow.
 		std::cout << "Failed to open file: " << path << std::endl;
 	}
 	else {
@@ -56,7 +56,7 @@ void  TextManipulation::makeWordList() {
 	}
 	doc.close();
 }
-// Деление на выборки.
+// Р”РµР»РµРЅРёРµ РЅР° РІС‹Р±РѕСЂРєРё.
 void  TextManipulation::makeSets() {						
 	size_t index = round(0.8 * words.size());
 	for (size_t i = 0; i < index; i++) {
@@ -67,10 +67,10 @@ void  TextManipulation::makeSets() {
 	}
 }
 void  TextManipulation::corrupt(std::vector<std::string> strSet, std::vector<std::string> &strGet) {
-	for (auto i = 0; i < strSet.size(); i++) { // Копируем исходный вектор. (size_t ~ auto?)
+	for (auto i = 0; i < strSet.size(); i++) { // РљРѕРїРёСЂСѓРµРј РёСЃС…РѕРґРЅС‹Р№ РІРµРєС‚РѕСЂ.
 		strGet.push_back(strSet[i]);
 	}
-	// Нормальный рандомизатор.
+	// РќРѕСЂРјР°Р»СЊРЅС‹Р№ СЂР°РЅРґРѕРјРёР·Р°С‚РѕСЂ.
 	std::random_device dev;
 	std::mt19937 rng(dev());
 
