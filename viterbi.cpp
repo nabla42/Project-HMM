@@ -3,23 +3,22 @@
 void Viterbi::correct(std::vector<std::string> corruptedSet, Matrix emissionProb, Matrix transitionProb, Matrix distribution) {
 
 	for (size_t w = 0; w < corruptedSet.size(); ++w) {
-		// Создали подконтейнеры для Т1 и Т2
+	// РЎРѕР·РґР°Р»Рё РїРѕРґРєРѕРЅС‚РµР№РЅРµСЂС‹ РґР»СЏ Рў1 Рё Рў2
 	//int w = 13;
 		Matrix T1(alphSize, corruptedSet[w].length());
 		Matrix T2(alphSize, corruptedSet[w].length());
-		//this->T1 = T1;
-		//this->T2 = T2;
+
 		double temp_max = -1;
 		double temp = 0;
 		int temp_k = 0;
 
-		// 1) Для первой буквы в слове:
+		// 1) Р”Р»СЏ РїРµСЂРІРѕР№ Р±СѓРєРІС‹ РІ СЃР»РѕРІРµ:
 		for (size_t j = 0; j < alphSize; j++) {
 			T1.matrix[j][0] = distribution.matrix[0][j] * emissionProb.matrix[j][int(corruptedSet[w][0]) - 97];
 			T2.matrix[j][0] = 0;
 		}
-		// 2) Для остальных:
-		for (size_t i = 1; i < corruptedSet[w].length(); i++) { // Длина слова
+		// 2) Р”Р»СЏ РѕСЃС‚Р°Р»СЊРЅС‹С…:
+		for (size_t i = 1; i < corruptedSet[w].length(); i++) { // Р”Р»РёРЅР° СЃР»РѕРІР°
 			for (size_t j = 0; j < alphSize; j++) {
 				for (size_t k = 0; k < alphSize; k++) {
 					temp = T1.matrix[k][i - 1] * transitionProb.matrix[k][j] * emissionProb.matrix[j][int(corruptedSet[w][i]) - 97];
@@ -43,7 +42,7 @@ void Viterbi::correct(std::vector<std::string> corruptedSet, Matrix emissionProb
 		std::vector<int> Z(corruptedSet[w].length());
 		std::vector<char> X(corruptedSet[w].length());
 
-		for (int k = 0; k < alphSize; k++) { // Смотрим на последние буквы слова
+		for (int k = 0; k < alphSize; k++) { // РЎРјРѕС‚СЂРёРј РЅР° РїРѕСЃР»РµРґРЅРёРµ Р±СѓРєРІС‹ СЃР»РѕРІР°
 
 			temp = T1.matrix[k][corruptedSet[w].length() - 1];
 			if (temp > temp_max) {
