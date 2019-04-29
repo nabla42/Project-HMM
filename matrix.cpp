@@ -10,11 +10,11 @@ void Matrix::makeMatrix(){
 }
 
 //std::vector<std::vector<double>>Matrix::getMatrix() { return matrix; }
-// Переделать для итератора
+// РџРµСЂРµРґРµР»Р°С‚СЊ РґР»СЏ РёС‚РµСЂР°С‚РѕСЂР°
 void Matrix::showMatrix() {
 	for (auto j = 0; j < height; ++j) {
 		for (size_t i = 0; i < weight; ++i) {
-			std::cout << matrix[j][i]<<" ";		//this->matrix ннада?
+			std::cout << matrix[j][i]<<" ";
 		}
 		std::cout << "\n";
 	}
