@@ -14,7 +14,7 @@ void TrainingHMM::makeEmission(std::vector<std::string>trainingSet, std::vector<
 			emissionProb.matrix[int(trainingSet[i][j]) - 97][int(corruptedSet[i][j]) - 97] += 1;
 		}
 	}
-	// Уберем нули и приведем к вероятностям (+ округлим)
+	// РЈР±РµСЂРµРј РЅСѓР»Рё Рё РїСЂРёРІРµРґРµРј Рє РІРµСЂРѕСЏС‚РЅРѕСЃС‚СЏРј (+ РѕРєСЂСѓРіР»РёРј)
 	for (size_t i = 0; i < alphSize; ++i) {
 		for (size_t j = 0; j < alphSize; ++j) {
 			if (emissionProb.matrix[i][j] == 0) { emissionProb.matrix[i][j] = 1; }
@@ -22,7 +22,7 @@ void TrainingHMM::makeEmission(std::vector<std::string>trainingSet, std::vector<
 	}
 	for (size_t i = 0; i < alphSize; ++i) {
 		double emissSum = sum(emissionProb.matrix[i]);
-		for (size_t j = 0; j < alphSize; ++j) {									 // Внизу - округление для "вмещаемого" вывода на экран.
+		for (size_t j = 0; j < alphSize; ++j) {						 // Р’РЅРёР·Сѓ - РѕРєСЂСѓРіР»РµРЅРёРµ РґР»СЏ "РІРјРµС‰Р°РµРјРѕРіРѕ" РІС‹РІРѕРґР° РЅР° СЌРєСЂР°РЅ.
 			emissionProb.matrix[i][j] = emissionProb.matrix[i][j] / emissSum;	//round((emissionProb.matrix[i][j] / emissSum) * roundAcc) / roundAcc;
 		}
 	}
@@ -35,7 +35,7 @@ void TrainingHMM::makeTransistion(std::vector<std::string>trainingSet) {
 			}
 		}
 	}
-	// Приводим к вероятностям
+	// РџСЂРёРІРѕРґРёРј Рє РІРµСЂРѕСЏС‚РЅРѕСЃС‚СЏРј
 	for (size_t i = 0; i < alphSize; ++i) {
 		for (size_t j = 0; j < alphSize; ++j) {
 			if (transitionProb.matrix[i][j] == 0) { transitionProb.matrix[i][j] = 1; }
@@ -49,14 +49,14 @@ void TrainingHMM::makeTransistion(std::vector<std::string>trainingSet) {
 	}
 };
 void TrainingHMM::makeDistribution(std::vector<std::string>trainingSet) {
-	int sum = 0; // Всего букв в тексте
+	int sum = 0; // Р’СЃРµРіРѕ Р±СѓРєРІ РІ С‚РµРєСЃС‚Рµ
 	for (size_t i = 0; i < trainingSet.size(); ++i) {
 		for (size_t j = 0; j < trainingSet[i].length(); ++j) {
 			distribution.matrix[0][int(trainingSet[i][j]) - 97] += 1;
 			sum++;
 		}
 	}
-	// Приводим к вероятностям
+	// РџСЂРёРІРѕРґРёРј Рє РІРµСЂРѕСЏС‚РЅРѕСЃС‚СЏРј
 	for (size_t i = 0; i < alphSize; ++i) {
 		distribution.matrix[0][i] = distribution.matrix[0][i] / sum;	//round((distribution.matrix[0][i] / sum) * roundAcc) / roundAcc;
 	}
