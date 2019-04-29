@@ -1,13 +1,13 @@
 #include "process.h"
 
 
-// Этот класс, в итоге, можно сделать "Фасадом", или создать отдельный.
+// Р­С‚РѕС‚ РєР»Р°СЃСЃ, РІ РёС‚РѕРіРµ, РјРѕР¶РЅРѕ СЃРґРµР»Р°С‚СЊ "Р¤Р°СЃР°РґРѕРј", РёР»Рё СЃРѕР·РґР°С‚СЊ РѕС‚РґРµР»СЊРЅС‹Р№.
 
 void Process::makeStat(std::vector<std::string> corruptedTestSet, std::vector<std::string> testSet, std::vector<std::string> correctedText) {
 	// TP: wrong-- > correct
 	// FN: wrong-- > wrong
 	// TP: correct-- > wrong
-	// Precision = TP / (TP + FP)	<--------------- по этому поводу - не уверена.
+	// Precision = TP / (TP + FP)	<--------------- РїРѕ СЌС‚РѕРјСѓ РїРѕРІРѕРґСѓ - РЅРµ СѓРІРµСЂРµРЅР°.
 	// Recall = TP / (TP + FN)		<---------------	- / / -
 
 	for (auto i = 0; i < correctedText.size(); ++i) {
