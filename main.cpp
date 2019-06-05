@@ -1,26 +1,12 @@
-﻿#include <iostream>
-#include "textManipulation.h"
-#include "matrix.h"
-#include "trainingHMM.h"
-#include "viterbi.h"
-#include "process.h"
+#include "entrypoint.h"
+#include <QApplication>
 
-int main()
+int main(int argc, char *argv[])
 {
-	setlocale(LC_ALL, "Russian");
-	TextManipulation* t = new TextManipulation("text/bigtest.txt");//testdata.txt");
-	//t.showCorruptedTrainingSet();
-	//t.showCorruptedTestSet();
-	// TextManipulation - ok!
+    QApplication a(argc, argv);
+ // Choose_User CU;
+    EntryPoint w;
+    w.show();
 
-	TrainingHMM *thm = new TrainingHMM((*t).getTrainingSet(), (*t).getCorruptedTrainingSet());
-	//TrainingHMM - ok!
-
-	Viterbi* vit = new Viterbi((*t).getCorruptedTestSet(), (*thm).getEmiss(), (*thm).getTrans(), (*thm).getDist());
-	// Не так хорошо, как хотелось бы..
-
-	Process* pr = new Process((*t).getCorruptedTestSet(), (*t).getTestSet(), (*vit).getCorrectedText());
-	(*pr).showStat();
-	// Есть сомнения.
+    return a.exec();
 }
-
