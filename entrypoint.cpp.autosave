@@ -39,7 +39,7 @@ void EntryPoint::on_btnEntrance_clicked()
       }
       else
       {
-          mess->setText("РќРµРІРµСЂРЅРѕРµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РїР°СЂРѕР»СЊ");
+          mess->setText("Неверное имя пользователя или неправильный пароль");
           mess->setIcon(QMessageBox::Critical);
           mess->show();
       }

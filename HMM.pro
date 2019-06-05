@@ -24,23 +24,29 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES +=\
+    choose_user.cpp \
     entrypoint.cpp \
     adminwindow.cpp \
+    modelname.cpp \
     starthmmwindow.cpp \
     main.cpp \
-    waitingforresults.cpp \
-    tabpage.cpp
+    tabpage.cpp \
+    waitingforresults.cpp
 
 HEADERS  += \
+    choose_user.h \
     entrypoint.h \
     adminwindow.h \
+    modelname.h \
     starthmmwindow.h \
-    waitingforresults.h \
-    tabpage.h
+    tabpage.h \
+    waitingforresults.h
 
 FORMS    += \
+    choose_user.ui \
     entrypoint.ui \
     adminwindow.ui \
+    modelname.ui \
     starthmmwindow.ui \
     waitingforresults.ui \
     tabpage.ui
